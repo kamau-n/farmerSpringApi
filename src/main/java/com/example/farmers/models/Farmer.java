@@ -44,9 +44,43 @@ public class Farmer {
     )
     private String farmers_last_name;
 
+    @Column(
+            name = "farmers_email",
+            updatable = true
+    )
+    private String farmers_email;
+
+    @Column(
+            name = "farmers_address",
+            updatable = true
+    )
+    private String farmers_address;
+
+    @Column(
+            name = "farmers_location",
+            updatable = true
+    )
+    private String farmers_location;
+
+    @Column(
+            name = "farmers_password",
+            updatable = true
+    )
+    private String farmers_password;
+
+    @Column(
+            name = "farmers_role",
+            updatable = false
+    )
+    private String farmers_role;
+
+    @Column(
+            name = "isActive",
+            updatable = false
 
 
-
+    )
+    private  boolean isActive;
 
 
 }
