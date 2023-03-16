@@ -1,5 +1,6 @@
 package com.example.farmers.services;
 
+import com.example.farmers.config.auth.FarmerDetails;
 import com.example.farmers.models.Farmer;
 import com.example.farmers.repositories.FarmersRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,12 +19,13 @@ public class FarmerService implements UserDetailsService {
 
     @Autowired
      FarmersRepository farmersRepository;
-
     @Override
-    public UserDetails loadUserByUsername(String email)  throws UsernameNotFoundException {
-       Optional<Farmer> farmer = farmersRepository.findFarmerByEmail(email);
-       return  new Farmer(farmer);
+    public UserDetails loadUserByUsername(String farmer_email) throws UsernameNotFoundException {
+         farmersRepository.findFarmerByEmail(farmer_email);
+         return null;
+
     }
+
     public List<Farmer> getFarmers() {
         return  farmersRepository.findAll();
 
