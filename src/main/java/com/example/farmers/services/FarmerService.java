@@ -20,9 +20,10 @@ public class FarmerService implements UserDetailsService {
     @Autowired
      FarmersRepository farmersRepository;
     @Override
-    public UserDetails loadUserByUsername(String farmer_email) throws UsernameNotFoundException {
-         farmersRepository.findFarmerByEmail(farmer_email);
-         return null;
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+       Optional<Farmer> farmer =  farmersRepository.findByEmail(email);
+       farmer.orElseThrow(()-> new UsernameNotFoundException("User not found"));
+         return  farmer.map(FarmerDetails::new).get();
 
     }
 

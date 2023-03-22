@@ -1,39 +1,53 @@
 package com.example.farmers.config.auth;
 
+import com.example.farmers.models.Farmer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FarmerDetails  implements UserDetails {
-    private  String farmerUsername;
+//    private final String farmerEmail;
+    private  String email;
 
-  FarmerDetails(String farmerUsername){
-    this.farmerUsername=farmerUsername;
-    }
-    FarmerDetails() {
+    private  String password;
+    private  Boolean active;
+
+    private List<GrantedAuthority> authorities;
+
+  public FarmerDetails(Farmer farmer){
+      this.email =farmer.getEmail();
+      this.password=farmer.getFarmers_password();
+      this.active=farmer.isActive();
+      this.authorities=Arrays.stream(farmer.getFarmers_role().split(",")).map(SimpleGrantedAuthority::new)
+              .collect(Collectors.toList());
+
+
 
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return "kamau";
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return farmerUsername;
+        return email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
@@ -43,11 +57,11 @@ public class FarmerDetails  implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
     }
 }

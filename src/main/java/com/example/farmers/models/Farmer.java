@@ -45,10 +45,10 @@ public class Farmer {
     private String farmers_last_name;
 
     @Column(
-            name = "farmers_email",
+            name = "email",
             updatable = true
     )
-    private String farmers_email;
+    private String email;
 
     @Column(
             name = "farmers_address",
@@ -76,7 +76,7 @@ public class Farmer {
 
     @Column(
             name = "isActive",
-            updatable = false
+            updatable = true
 
 
     )

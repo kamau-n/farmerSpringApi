@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface FarmersRepository  extends JpaRepository<Farmer,Integer> {
 
     List<Farmer> findFarmerById(Integer integer);
-    Optional<Farmer> findFarmerByEmail(String farmers_email);
+    Optional<Farmer> findByEmail(String email);
 
 
 
