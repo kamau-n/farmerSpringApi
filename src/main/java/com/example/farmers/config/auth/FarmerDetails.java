@@ -26,6 +26,8 @@ public class FarmerDetails  implements UserDetails {
       this.authorities=Arrays.stream(farmer.getFarmers_role().split(",")).map(SimpleGrantedAuthority::new)
               .collect(Collectors.toList());
 
+      System.out.println(farmer);
+
 
 
     }

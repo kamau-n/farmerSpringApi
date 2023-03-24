@@ -24,6 +24,13 @@ public class FarmerController {
 
     }
 
+    @GetMapping()
+        public List<Farmer> getFarmers(){
+            return farmerService.getFarmer();
+
+        }
+
+
 
 
    @PostMapping

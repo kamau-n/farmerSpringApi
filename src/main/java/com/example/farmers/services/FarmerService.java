@@ -23,6 +23,7 @@ public class FarmerService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
        Optional<Farmer> farmer =  farmersRepository.findByEmail(email);
        farmer.orElseThrow(()-> new UsernameNotFoundException("User not found"));
+        System.out.println(farmer);
          return  farmer.map(FarmerDetails::new).get();
 
     }
@@ -42,5 +43,9 @@ public class FarmerService implements UserDetailsService {
         System.out.println(id);
 
        return farmersRepository.findFarmerById(id);
+    }
+
+    public List<Farmer> getFarmer() {
+        return  farmersRepository.findAll();
     }
 }
