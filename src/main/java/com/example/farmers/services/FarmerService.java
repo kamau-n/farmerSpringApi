@@ -36,6 +36,7 @@ public class FarmerService implements UserDetailsService {
 
 
     public void setFarmer(Farmer farmer) {
+        System.out.println(farmer);
         farmersRepository.save(farmer);
     }
 
