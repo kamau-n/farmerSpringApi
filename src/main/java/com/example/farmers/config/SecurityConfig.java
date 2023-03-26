@@ -41,7 +41,7 @@ public PasswordEncoder getPasswordEncoder(){
         http.authorizeRequests()
            .antMatchers("/api/admin/**").permitAll()
                 .antMatchers("/api/farmer/**").permitAll()
-//                .antMatchers("/").hasRole("ADMIN")
+               .antMatchers("/").hasRole("ADMIN")
                 .and().formLogin();
 
 
