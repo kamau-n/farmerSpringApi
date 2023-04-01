@@ -21,23 +21,7 @@ public class FarmerService implements UserDetailsService {
 
     @Autowired
      FarmersRepository farmersRepository;
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-       Optional<Farmer> farmer =  farmersRepository.findByEmail(email);
-       farmer.orElseThrow(()-> new UsernameNotFoundException("User not found"));
-        System.out.println(farmer);
-         return  farmer.map(FarmerDetails::new).get();
 
-    }
-
-    public List<FarmerDTO> getFarmer() {
-        return  farmersRepository.findAll()
-                .stream()
-                .map(this :: convertToDto)
-                .collect(Collectors.toList());
-
-
-    }
 
     public FarmerDTO convertToDto(Farmer farmer) {
         FarmerDTO farmerDTO = new FarmerDTO();
@@ -50,20 +34,41 @@ public class FarmerService implements UserDetailsService {
 
         return farmerDTO;
     }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+       Optional<Farmer> farmer =  farmersRepository.findByEmail(email);
+       farmer.orElseThrow(()-> new UsernameNotFoundException("User not found"));
+        System.out.println(farmer);
+         return  farmer.map(FarmerDetails::new).get();
+
+    }
+
+    public List<FarmerDTO> getFarmers() {
+        return  farmersRepository.findAll()
+                .stream()
+                .map(this :: convertToDto)
+                .collect(Collectors.toList());
 
 
-//    public void setFarmer(Farmer farmer) {
-//        System.out.println(farmer);
-//        farmersRepository.save(farmer);
-//    }
+    }
 
-//    public List<Farmer> getFarmerById(Integer id) {
-//        System.out.println(id);
-//
-//       return farmersRepository.findFarmerById(id);
-//    }
 
-//    public List<FarmerDTO> getFarmer() {
-//        return  farmersRepository.findAll();
-//    }
+
+
+    public void setFarmer(Farmer farmer) {
+        System.out.println(farmer);
+        farmersRepository.save(farmer);
+    }
+
+    public List<FarmerDTO> getFarmerById(Integer id) {
+        System.out.println(id);
+
+       return farmersRepository.findFarmerById(id)
+               .stream()
+               .map(this :: convertToDto)
+               .collect(Collectors.toList());
+
+    }
+
+
 }

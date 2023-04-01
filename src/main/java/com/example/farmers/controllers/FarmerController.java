@@ -19,16 +19,16 @@ public class FarmerController {
     private FarmerService farmerService;
 
 
-//    @GetMapping(path = "{farmersId}")
-//    public List<Farmer> getFarmerById(@PathVariable("farmersId") Integer id){
-//       return farmerService.getFarmerById(id);
-//
-//
-//    }
+    @GetMapping(path = "{farmersId}")
+    public List<FarmerDTO> getFarmerById(@PathVariable("farmersId") Integer id){
+       return farmerService.getFarmerById(id);
+
+
+    }
 
     @GetMapping()
     public List<FarmerDTO> getFarmers() {
-        return farmerService.getFarmer();
+        return farmerService.getFarmers();
 
     }
 
@@ -36,11 +36,11 @@ public class FarmerController {
 
 
 
-//   @PostMapping
-//    public void registerFarmer(Farmer farmer){
-//            farmerService.setFarmer(farmer);
-//        }
-//
-//
-//
+   @PostMapping
+    public void registerFarmer(Farmer farmer){
+            farmerService.setFarmer(farmer);
+        }
+
+
+
 }

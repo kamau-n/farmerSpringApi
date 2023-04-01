@@ -25,7 +25,7 @@ public class AdminController {
 
     @GetMapping()
     public List<FarmerDTO> getFarmers(){
-        return farmerService.getFarmer();
+        return farmerService.getFarmers();
 
     }
 

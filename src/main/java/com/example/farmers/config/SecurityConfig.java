@@ -40,7 +40,7 @@ public PasswordEncoder getPasswordEncoder(){
   protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
            .antMatchers("/api/admin/**").permitAll()
-                .antMatchers("/api/farmer/**").permitAll()
+                .antMatchers("/api/farmers").hasRole("admin")
                .antMatchers("/").hasRole("ADMIN")
                 .and().formLogin();
 
