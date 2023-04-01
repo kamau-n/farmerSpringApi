@@ -1,5 +1,6 @@
 package com.example.farmers.controllers;
 
+import com.example.farmers.dto.FarmerDTO;
 import com.example.farmers.models.Farmer;
 import com.example.farmers.repositories.FarmersRepository;
 import com.example.farmers.services.FarmerService;
@@ -23,17 +24,17 @@ public class AdminController {
 //    }
 
     @GetMapping()
-    public List<Farmer> getFarmers(){
-        return farmerService.getFarmers();
+    public List<FarmerDTO> getFarmers(){
+        return farmerService.getFarmer();
 
     }
 
 
 
-    @PostMapping
-    public void setFarmer(Farmer farmer){
-        farmerService.setFarmer(farmer);
-    }
+//    @PostMapping
+//    public void setFarmer(Farmer farmer){
+//        farmerService.setFarmer(farmer);
+//    }
 
 
 

@@ -20,8 +20,8 @@ public class MainController {
     public  String getMain(){
         return "this is the main route";
     }
-@PostMapping
-    public  void addFarmer(Farmer farmer){
-        farmerService.setFarmer(farmer);
-}
+//@PostMapping
+//    public  void addFarmer(Farmer farmer){
+//        farmerService.setFarmer(farmer);
+//}
 }

@@ -1,9 +1,11 @@
 package com.example.farmers.controllers;
 
+import com.example.farmers.dto.FarmerDTO;
 import com.example.farmers.models.Farmer;
 import com.example.farmers.repositories.FarmersRepository;
 import com.example.farmers.services.FarmerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,31 +15,32 @@ import java.util.List;
 @RequestMapping(path ="/api/farmers")
 public class FarmerController {
 
-    private  final FarmerService farmerService;
+    @Autowired
+    private FarmerService farmerService;
 
 
+//    @GetMapping(path = "{farmersId}")
+//    public List<Farmer> getFarmerById(@PathVariable("farmersId") Integer id){
+//       return farmerService.getFarmerById(id);
+//
+//
+//    }
 
-    @GetMapping(path = "{farmersId}")
-    public List<Farmer> getFarmerById(@PathVariable("farmersId") Integer id){
-       return farmerService.getFarmerById(id);
-
+    @GetMapping()
+    public List<FarmerDTO> getFarmers() {
+        return farmerService.getFarmer();
 
     }
 
-    @GetMapping()
-        public List<Farmer> getFarmers(){
-            return farmerService.getFarmer();
-
-        }
 
 
 
 
-   @PostMapping
-    public void registerFarmer(Farmer farmer){
-            farmerService.setFarmer(farmer);
-        }
-
-
-
+//   @PostMapping
+//    public void registerFarmer(Farmer farmer){
+//            farmerService.setFarmer(farmer);
+//        }
+//
+//
+//
 }
